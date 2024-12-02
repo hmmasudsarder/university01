@@ -3,6 +3,7 @@ import { UserRoutes } from '../modules/users/users.route';
 import { StudentRoutes } from '../modules/students/student.route';
 
 
+
 const router = Router();
 
 const moduleRoutes = [
