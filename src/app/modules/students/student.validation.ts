@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 
-const userNameSchema = z.object({
+const createUserNameValidationSchema = z.object({
   firstName: z
     .string()
     .min(1)
@@ -13,7 +13,7 @@ const userNameSchema = z.object({
   lastName: z.string().min(1),
 });
 
-const guardianSchema = z.object({
+const createGuardianValidationSchema = z.object({
   fatherName: z.string().min(1),
   fatherOccupation: z.string().min(1),
   fatherContactNo: z.string().min(1),
@@ -22,31 +22,35 @@ const guardianSchema = z.object({
   motherContactNo: z.string().min(1),
 });
 
-const localGuardianSchema = z.object({
+const createLocalGuardianValidationSchema = z.object({
   name: z.string().min(1),
   occupation: z.string().min(1),
   contactNo: z.string().min(1),
   address: z.string().min(1),
 });
 
- const studentValidationSchema = z.object({
-  id: z.string().min(1),
-  password: z.string().max(20),
-  name: userNameSchema,
-  gender: z.enum(['male', 'female', 'other']),
-  dateOfBirth: z.string(),
-  email: z.string().email().min(1),
-  contactNo: z.string().min(1),
-  emergencyContactNo: z.string().min(1),
-  bloogGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']),
-  presentAddress: z.string().min(1),
-//   permanentAddress: z.string().min(1),
-  permanentAddres: z.string().min(1),
-  guardian: guardianSchema,
-  localGuardian: localGuardianSchema,
-  profileImg: z.string(),
-  isActive: z.enum(['active', 'blocked']).default('active'),
-  isDeleted: z.boolean().optional().default(false),
+export const createStudentValidationSchema = z.object({
+  body: z.object({
+    password: z.string().max(20),
+    student: z.object({
+      name: createUserNameValidationSchema,
+      gender: z.enum(['male', 'female', 'other']),
+      dateOfBirth: z.string().optional(),
+      email: z.string().email().min(1),
+      contactNo: z.string().min(1),
+      emergencyContactNo: z.string().min(1),
+      bloogGroup: z.enum(['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']),
+      presentAddress: z.string().min(1),
+      permanentAddres: z.string().min(1),
+      guardian: createGuardianValidationSchema,
+      localGuardian: createLocalGuardianValidationSchema,
+      profileImg: z.string(),
+    })
+  })
+
 });
 
-export default studentValidationSchema;
+export const studentValidations = {
+  createStudentValidationSchema,
+  // updateStudentValidationSchema,
+};
