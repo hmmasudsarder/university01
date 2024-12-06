@@ -18,12 +18,12 @@ import { Student } from './student.model';
 // };
 
 const getAllStudentFromDB = async () => {
-  const result = await Student.find();
+  const result = await Student.find().populate('academicDepartment').populate("admissionSemester");
   return result;
 };
 
 const getSingleStudent = async (id: string) => {
-  const result = await Student.findOne({ id });
+  const result = await Student.findOne({ id }).populate('academicDepartment').populate("admissionSemester");
   return result;
 };
 

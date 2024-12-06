@@ -134,6 +134,10 @@ const studentSchema = new Schema<TStudent, StudentModel>({
     type: Schema.Types.ObjectId,
     ref: 'AcademicSemester',
   },
+  academicDepartment: {
+    type: Schema.Types.ObjectId,
+    ref: 'AcademicDepartment',
+  },
   // isActive: {
   //   type: String,
   //   enum: ['active', 'blocked'],
