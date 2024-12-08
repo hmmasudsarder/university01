@@ -123,7 +123,7 @@ const studentSchema = new Schema<TStudent, StudentModel>({
     type: String,
     required: [true, 'Present address is required'],
   },
-  permanentAddres: {
+  permanentAddress: {
     type: String,
     required: [true, 'Permanent address is required'],
   },
