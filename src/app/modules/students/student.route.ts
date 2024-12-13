@@ -7,8 +7,8 @@ const router = express.Router();
 //will call controller
 // router.post('/create-student', StudentController.createStudent);
 router.get('/', StudentController.getAllStudents);
-router.get('/:studentId', StudentController.getSingleStudent);
-router.patch('/:studentId', validateRequest(updateStudentValidationSchema), StudentController.updateStudent);
-router.delete('/:studentId', StudentController.deletedStudent);
+router.get('/:id', StudentController.getSingleStudent);
+router.patch('/:id', validateRequest(updateStudentValidationSchema), StudentController.updateStudent);
+router.delete('/:id', StudentController.deletedStudent);
 
 export const StudentRoutes = router;
