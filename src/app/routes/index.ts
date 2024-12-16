@@ -8,7 +8,6 @@ import { FacultyRoutes } from '../modules/Faculty/faculty.route';
 import { CourseRoutes } from '../modules/Course/course.route';
 
 
-
 const router = Router();
 
 const moduleRoutes = [
