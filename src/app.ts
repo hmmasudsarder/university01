@@ -4,7 +4,7 @@ import cors from 'cors';
 // import { UserRoutes } from './app/modules/users/users.route';
 import globalErrorHandler from './app/middlewares/globalErrorhandler';
 import router from './app/routes';
-// import notFound from './app/middlewares/notFound';
+import notFound from './app/middlewares/notFound';
 const app: Application = express();
 // const port = 3000
 
@@ -28,5 +28,5 @@ const test = async (req: Request, res: Response) => {
 app.get('/', test);
 
 app.use(globalErrorHandler);
-// app.use(notFound)
+app.use(notFound)
 export default app;
